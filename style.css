@@ -7,12 +7,25 @@ body {
     text-align: center;
 }
 
+.btnContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.clear,
+.gridSize {
+    border-radius: 7%;
+    border-style: solid;
+    border-color: black;
+    background-color: rgba(33, 148, 224, 0.233);
+    padding: 5px 7px;
+}
+
 #container {
     width: 400px;
     outline: 1px solid black;
     box-sizing: border-box;
-    
-    
 }
 
 .row {
@@ -23,8 +36,4 @@ body {
 .cell {
     border: 1px solid black;
     margin: auto;
-}
-
-.black {
-    color: black;
 }

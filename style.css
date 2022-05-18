@@ -1,0 +1,17 @@
+#container {
+    width: 400px;
+    outline: 1px solid black;
+    box-sizing: border-box;
+    
+    
+}
+
+.row {
+    display: flex; 
+    
+}
+
+.cell {
+    border: 1px solid black;
+    margin: auto;
+}

@@ -26,14 +26,30 @@ function createGrid(x) {
     })
 };
 
+window.onload = (function() {
+    createGrid(16);
+});
+
 function clearGrid() {
     let grid = document.querySelectorAll('.cell');
     let i;
     for (i=0; i < grid.length; i++) {
         grid[i].style.background = 'white';
     }
+};
+
+let sizeSelection;
+function changeGridSize() {
+    sizeSelection = prompt('What size would you like? Enter a number between 1-100.: 30');
+    if (sizeSelection < 1 || sizeSelection > 100 || sizeSelection == NaN || sizeSelection == undefined) {
+        alert('Please try again with a number between 1-100.');
+        changeGridSize();
+    } else {
+        createGrid(sizeSelection);
+    } 
 }
 
-window.onload = (function() {
-    createGrid(16);
-});
+gridSize.addEventListener('click', function() {
+    changeGridSize();
+})
+

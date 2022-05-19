@@ -1,6 +1,10 @@
 const container = document.querySelector('#container');
 const clear = document.querySelector('.clear');
 const gridSize = document.querySelector('.gridSize');
+const color = document.querySelector('.color');
+const rainbow = document.querySelector('.rainbow');
+const colorPicker = document.querySelector('.colorPicker');
+let currentColor = 'black';
 
 function createGrid(x) {
     for (let rows = 0; rows < x; rows++) {
@@ -18,14 +22,28 @@ function createGrid(x) {
        const grid = document.querySelectorAll('.cell');
        grid.forEach(cell => {
            cell.addEventListener('mouseover', function(e) {
-               e.currentTarget.style.background = 'black';
+               e.currentTarget.style.background = currentColor;
        }); 
     });
 };
 
-window.onload = (function() {
-    createGrid(16);
-});
+colorPicker.addEventListener('input', (e) => {
+    currentColor = e.target.value;
+})
+
+color.addEventListener('click', function() {
+        clearInterval(myTimer);
+        currentColor = colorPicker.value;
+})
+
+rainbow.addEventListener('click', function() {
+        myTimer = setInterval(randomColor, 15);
+        running = true;
+    });
+
+function randomColor() {
+    currentColor = 'rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')';
+}
 
 function clearGrid() {
     let grid = document.querySelectorAll('.cell');
@@ -41,7 +59,7 @@ clear.addEventListener('click', function() {
 
 let sizeSelection;
 function changeGridSize() {
-    sizeSelection = prompt('What size would you like? Enter a number between 1-100.: 30');
+    sizeSelection = prompt('What size would you like? Enter a number between 1-100.', '30');
     if (sizeSelection < 1 || sizeSelection > 100 || sizeSelection == NaN || sizeSelection == undefined) {
         alert('Please try again with a number between 1-100.');
         changeGridSize();
@@ -55,3 +73,6 @@ gridSize.addEventListener('click', function() {
     changeGridSize();
 })
 
+window.onload = (function() {
+    createGrid(16);
+});

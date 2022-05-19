@@ -20,10 +20,7 @@ function createGrid(x) {
            cell.addEventListener('mouseover', function(e) {
                e.currentTarget.style.background = 'black';
        }); 
-       clear.addEventListener('click', function() {
-        clearGrid();
-    })
-    })
+    });
 };
 
 window.onload = (function() {
@@ -38,6 +35,10 @@ function clearGrid() {
     }
 };
 
+clear.addEventListener('click', function() {
+    clearGrid();
+})
+
 let sizeSelection;
 function changeGridSize() {
     sizeSelection = prompt('What size would you like? Enter a number between 1-100.: 30');
@@ -45,6 +46,7 @@ function changeGridSize() {
         alert('Please try again with a number between 1-100.');
         changeGridSize();
     } else {
+        container.textContent = '';
         createGrid(sizeSelection);
     } 
 }

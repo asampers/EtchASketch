@@ -31,14 +31,29 @@ colorPicker.addEventListener('input', (e) => {
     currentColor = e.target.value;
 })
 
+let myTimer;
+let running;
 color.addEventListener('click', function() {
-        clearInterval(myTimer);
-        currentColor = colorPicker.value;
+    clearInterval(myTimer);  
+    running = false;  
+    color.style.background = '#ff8800c2';
+    rainbow.style.background = '#ff880088';
+    currentColor = colorPicker.value;
 })
 
-rainbow.addEventListener('click', function() {
-        myTimer = setInterval(randomColor, 15);
+rainbow.addEventListener('click', function() {  
+    if (running) {
+        clearInterval(myTimer);
+        running = false;
+        rainbow.style.background = '#ff880088';
+        color.style.background = '#ff8800c2';
+        currentColor = colorPicker.value;
+    } else {   
+        myTimer = setInterval(randomColor, 15); 
         running = true;
+        rainbow.style.background = '#ff8800c2';  
+        color.style.background = '#ff880088';
+    }
     });
 
 function randomColor() {

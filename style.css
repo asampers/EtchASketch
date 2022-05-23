@@ -35,9 +35,12 @@ h3 {
     font-size: 15px;
 }
 
-.color,
+.color {
+    background: #ff8800c2;
+}
+
 .rainbow {
-    background: rgba(255, 136, 0, 0.534);
+    background: #ff880088;
 }
 
 .colorPicker {
